@@ -6,7 +6,11 @@ function filterOut(item) {
   return item > 0;
 }
 
-console.log(myArr.filter(filterOut));
+function filterFunction(arr) {
+  console.log(arr.filter(filterOut));
+}
+
+filterFunction(myArr);
 
 // //Задание 2
 
@@ -19,56 +23,34 @@ function findFirstPositive(arr) {
   });
 }
 
-console.log(findFirstPositive(myArr));
-console.log(findFirstPositive(myArr2));
+function isFirstPositive(arr) {
+  console.log(findFirstPositive(arr));
+}
+
+isFirstPositive(myArr);
+isFirstPositive(myArr2);
 
 // //Задание 3
 
 var palindrome = "поТоП";
 
 function isPalindrome(newString) {
-  var charArray = newString.split("");
-  var bufferCharArray = charArray.slice().reverse();
-  for (var i = 0; i < charArray.length; i++) {
-    if (
-      charArray[i] == bufferCharArray[i] ||
-      charArray[i].toLowerCase() == bufferCharArray[i] ||
-      charArray[i].toUpperCase() == bufferCharArray[i]
-    ) {
-      continue;
-    } else {
-      return false;
-    }
-  }
-  return true;
+  var firstString = newString.toUpperCase();
+  var secondString = firstString.split("").reverse().join("");
+  return console.log(firstString === secondString);
 }
 
-console.log(isPalindrome(palindrome));
+isPalindrome(palindrome);
 
 // //Задание 4
 
-console.log(areAnagrams("колобок", "локобок"));
-
 function areAnagrams(firstString, secondString) {
-  if (firstString.length !== secondString.length) {
-    return false;
-  }
-
-  var firstString = firstString.split("").sort();
-  var secondString = secondString.split("").sort();
-  for (var i = 0; i < firstString.length; i++) {
-    if (
-      firstString[i] == secondString[i] ||
-      firstString[i].toLowerCase() == secondString[i].toLowerCase() ||
-      firstString[i].toUpperCase() == secondString[i].toUpperCase()
-    ) {
-      continue;
-    } else {
-      return false;
-    }
-  }
-  return true;
+  var firstString = firstString.toLowerCase().split("").sort().join("");
+  var secondString = secondString.toLowerCase().split("").sort().join("");
+  return console.log(firstString === secondString);
 }
+
+areAnagrams("колобок", "локобок");
 
 // //Задание 5
 

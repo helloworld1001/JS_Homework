@@ -1,5 +1,4 @@
 var container = document.getElementById("container");
-
 var firstPar = document.createElement("p"),
   secondPar = document.createElement("p");
 
@@ -25,10 +24,34 @@ button.onclick = changeRefs;
 
 secondParRefs[0].addEventListener("click", function (evt) {
   evt.preventDefault();
-  alert("http://google.by");
+  var text = this.textContent;
+  if (!localStorage.getItem(text)) {
+    var attr = this.getAttribute("href");
+    var objAttr = { path: attr };
+    localStorage.setItem(text, JSON.stringify(objAttr));
+    this.setAttribute("href", "#");
+    alert("Информация о ссылке сохранена");
+  } else {
+    var objAttr = JSON.parse(localStorage.getItem(text));
+    alert(objAttr.path);
+  }
 });
 
 secondParRefs[1].addEventListener("click", function (evt) {
   evt.preventDefault();
-  alert("https://vk.com");
+  var text = this.textContent;
+  if (!localStorage.getItem(text)) {
+    var attr = this.getAttribute("href");
+    var objAttr = { path: attr };
+    localStorage.setItem(text, JSON.stringify(objAttr));
+    this.setAttribute("href", "#");
+    alert("Информация о ссылке сохранена");
+  } else {
+    var objAttr = JSON.parse(localStorage.getItem(text));
+    alert(objAttr.path);
+  }
+});
+
+window.addEventListener("unload", function () {
+  localStorage.clear();
 });
