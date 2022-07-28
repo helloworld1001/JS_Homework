@@ -1,11 +1,11 @@
-var table = document.getElementsByTagName("table")[0];
-var addRow = document.getElementsByClassName("addrow")[0];
-var firstRow = document.getElementsByClassName("firstrow")[0];
+var table = document.getElementsByTagName('table')[0];
+var addRow = document.getElementsByClassName('addrow')[0];
+var firstRow = document.getElementsByClassName('firstrow')[0];
 
 addRow.onclick = function () {
-  var newRow = document.createElement("tr");
+  var newRow = document.createElement('tr');
   for (var i = 0; i < 3; i++) {
-    var td = document.createElement("td");
+    var td = document.createElement('td');
     newRow.appendChild(td);
   }
 
@@ -13,8 +13,8 @@ addRow.onclick = function () {
 };
 
 table.onclick = function (evt) {
-  if (table.getElementsByTagName("input")[0]) {
-    var currentInput = table.getElementsByTagName("input")[0];
+  if (table.getElementsByTagName('input')[0]) {
+    var currentInput = table.getElementsByTagName('input')[0];
     var enteredText = currentInput.value;
     currentInput.parentElement.innerHTML = enteredText;
   }
@@ -22,8 +22,8 @@ table.onclick = function (evt) {
   var target = evt.target;
   if (target == addRow) {
     return;
-  } else if (target.tagName == "TD") {
-    var targetInput = document.createElement("input");
+  } else if (target.tagName == 'TD') {
+    var targetInput = document.createElement('input');
     targetInput.value = target.innerHTML;
     target.innerHTML = null;
     target.appendChild(targetInput);
@@ -32,7 +32,7 @@ table.onclick = function (evt) {
 };
 
 document.body.onclick = function () {
-  var currentInput = table.getElementsByTagName("input")[0];
+  var currentInput = table.getElementsByTagName('input')[0];
   var enteredText = currentInput.value;
   currentInput.parentElement.innerHTML = enteredText;
 };

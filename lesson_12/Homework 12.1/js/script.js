@@ -1,6 +1,6 @@
-var container = document.getElementById("container");
-var firstPar = document.createElement("p"),
-  secondPar = document.createElement("p");
+var container = document.getElementById('container');
+var firstPar = document.createElement('p'),
+  secondPar = document.createElement('p');
 
 firstPar.innerHTML =
   'Hello, here are <a href="https://www.facebook.com">Link 1</a> and <a href="https://twitter.com">Link 2</a>';
@@ -10,29 +10,29 @@ secondPar.innerHTML =
 container.appendChild(firstPar);
 container.appendChild(secondPar);
 
-var button = document.getElementsByTagName("button")[0];
+var button = document.getElementsByTagName('button')[0];
 var firstParRefs = firstPar.children;
 var secondParRefs = secondPar.children;
 
 function changeRefs() {
   for (var i = 0; i < firstParRefs.length; i++) {
-    firstParRefs[i].classList.add("changed");
+    firstParRefs[i].classList.add('changed');
   }
 }
 
 button.onclick = changeRefs;
 
-secondPar.addEventListener("click", function (evt) {
+secondPar.addEventListener('click', function (evt) {
   var target = evt.target;
-  if (target.tagName == "A") {
+  if (target.tagName == 'A') {
     evt.preventDefault();
     var text = target.textContent;
     if (!localStorage.getItem(text)) {
-      var attr = target.getAttribute("href");
+      var attr = target.getAttribute('href');
       var objAttr = { path: attr };
       localStorage.setItem(text, JSON.stringify(objAttr));
-      target.setAttribute("href", "#");
-      alert("Информация о ссылке сохранена");
+      target.setAttribute('href', '#');
+      alert('Информация о ссылке сохранена');
     } else {
       var objAttr = JSON.parse(localStorage.getItem(text));
       alert(objAttr.path);
@@ -40,6 +40,6 @@ secondPar.addEventListener("click", function (evt) {
   }
 });
 
-window.addEventListener("unload", function () {
+window.addEventListener('unload', function () {
   localStorage.clear();
 });
